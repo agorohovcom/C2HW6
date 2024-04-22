@@ -2,12 +2,10 @@ package com.agorohov.employeebookspringwebapp.controller;
 
 import com.agorohov.employeebookspringwebapp.Employee;
 import com.agorohov.employeebookspringwebapp.exception.EmployeeAlreadyAddedException;
+import com.agorohov.employeebookspringwebapp.exception.EmployeeNotFoundException;
 import com.agorohov.employeebookspringwebapp.service.EmployeeService;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController()
 @RequestMapping("/employee")
@@ -22,23 +20,30 @@ public class EmployeeController {
     @GetMapping(value = "/add", produces = MediaType.APPLICATION_JSON_VALUE)
     public Employee addEmployee(@RequestParam String firstName,
                                 @RequestParam String lastName) {
-        try {
-            employeeService.addEmployee(firstName, lastName);
-        } catch (EmployeeAlreadyAddedException e) {
-            e.printStackTrace();
-        }
-        return new Employee(firstName, lastName);
+        return employeeService.addEmployee(firstName, lastName);
     }
 
-    private static class Response {
-        private final String message;
-
-        public Response(String message) {
-            this.message = message;
-        }
-
-        public String getMessage() {
-            return message;
-        }
+    @GetMapping(value = "/remove", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Employee removeEmployee(@RequestParam String firstName,
+                                   @RequestParam String lastName) {
+        return employeeService.removeEmployee(firstName, lastName);
     }
+
+    @ExceptionHandler({EmployeeAlreadyAddedException.class, EmployeeNotFoundException.class})
+    public String handleEmployeeNotFoundException(RuntimeException e) {
+        e.printStackTrace();
+        return e.getMessage();
+    }
+
+//    private static class Response {
+//        private final String message;
+//
+//        public Response(String message) {
+//            this.message = message;
+//        }
+//
+//        public String getMessage() {
+//            return message;
+//        }
+//    }
 }

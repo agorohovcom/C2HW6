@@ -17,23 +17,23 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void addEmployee(String firstName, String lastName) {
+    public Employee addEmployee(String firstName, String lastName) {
         Employee employee = new Employee(firstName, lastName);
-        if (!employees.contains(employee)) {
-            employees.add(employee);
-        } else {
+        if (employees.contains(employee)) {
             throw new EmployeeAlreadyAddedException("Сотрудник уже существует, добавление невозможно");
         }
+        employees.add(employee);
+        return employee;
     }
 
     @Override
-    public void removeEmployee(String firstName, String lastName) {
+    public Employee removeEmployee(String firstName, String lastName) {
         Employee employee = new Employee(firstName, lastName);
-        if (employees.contains(employee)) {
-            employees.remove(employee);
-        } else {
+        if (!employees.contains(employee)) {
             throw new EmployeeNotFoundException("Такого сотрудника нет, удаление невозможно");
         }
+        employees.remove(employee);
+        return employee;
     }
 
     @Override
