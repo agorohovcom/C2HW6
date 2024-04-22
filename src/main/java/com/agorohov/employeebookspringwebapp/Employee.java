@@ -16,7 +16,7 @@ public class Employee {
     }
 
     public String getLastName() {
-        return firstName;
+        return lastName;
     }
 
     @Override
@@ -38,7 +38,7 @@ public class Employee {
     @Override
     public String toString() {
         return "Сотрудник {"
-                + "имя:" + firstName
+                + "имя: " + firstName
                 + ", фамилия: " + lastName
                 + '}';
     }
