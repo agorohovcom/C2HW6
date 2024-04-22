@@ -6,6 +6,7 @@ import com.agorohov.employeebookspringwebapp.exception.EmployeeNotFoundException
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -39,10 +40,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee findEmployee(String firstName, String lastName) {
         Employee employee = new Employee(firstName, lastName);
-        if (employees.contains(employee)) {
-            return employee;
-        } else {
+        if (!employees.contains(employee)) {
             throw new EmployeeNotFoundException("Нет такого сотрудника:" + employee);
         }
+        return employee;
+    }
+
+    @Override
+    public List<Employee> findAllEmployees() {
+        return Collections.unmodifiableList(employees);
     }
 }
