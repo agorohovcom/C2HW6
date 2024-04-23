@@ -7,7 +7,7 @@ import com.agorohov.employeebookspringwebapp.service.EmployeeService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Collection;
 
 @RestController()
 @RequestMapping(value = "/employee", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -38,11 +38,12 @@ public class EmployeeController {
     }
 
     @GetMapping()
-    public List<Employee> getAllEmployees() {
+    public Collection<Employee> findAllEmployees() {
         return employeeService.findAllEmployees();
     }
 
     // Перехват указанных исключений с целью вывода в браузер сообщений из исключений
+    // Перекрывает @ResponseStatus
     @ExceptionHandler({EmployeeAlreadyAddedException.class, EmployeeNotFoundException.class})
     public String handleEmployeeNotFoundException(RuntimeException e) {
         e.printStackTrace();

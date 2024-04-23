@@ -6,6 +6,7 @@ import com.agorohov.employeebookspringwebapp.model.Employee;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public List<Employee> findAllEmployees() {
+    public Collection<Employee> findAllEmployees() {
         return Collections.unmodifiableList(employees);
     }
 }
