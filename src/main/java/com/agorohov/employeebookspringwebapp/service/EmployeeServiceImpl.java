@@ -1,8 +1,8 @@
 package com.agorohov.employeebookspringwebapp.service;
 
-import com.agorohov.employeebookspringwebapp.Employee;
 import com.agorohov.employeebookspringwebapp.exception.EmployeeAlreadyAddedException;
 import com.agorohov.employeebookspringwebapp.exception.EmployeeNotFoundException;
+import com.agorohov.employeebookspringwebapp.model.Employee;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

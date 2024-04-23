@@ -1,8 +1,8 @@
 package com.agorohov.employeebookspringwebapp.controller;
 
-import com.agorohov.employeebookspringwebapp.Employee;
 import com.agorohov.employeebookspringwebapp.exception.EmployeeAlreadyAddedException;
 import com.agorohov.employeebookspringwebapp.exception.EmployeeNotFoundException;
+import com.agorohov.employeebookspringwebapp.model.Employee;
 import com.agorohov.employeebookspringwebapp.service.EmployeeService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

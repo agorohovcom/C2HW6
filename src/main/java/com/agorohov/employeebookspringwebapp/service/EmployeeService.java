@@ -1,6 +1,6 @@
 package com.agorohov.employeebookspringwebapp.service;
 
-import com.agorohov.employeebookspringwebapp.Employee;
+import com.agorohov.employeebookspringwebapp.model.Employee;
 
 import java.util.List;
 

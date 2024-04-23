@@ -1,4 +1,4 @@
-package com.agorohov.employeebookspringwebapp;
+package com.agorohov.employeebookspringwebapp.model;
 
 import java.util.Objects;
 
